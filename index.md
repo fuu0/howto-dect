@@ -31,8 +31,8 @@ probably, read on. ;)
 
 Just to recap:
 
-- **DECT** is a wireless communication standard that is, among other things, used
-  for cordless telephones.
+- **DECT** (Digital Enhanced Cordless Telecommunication) is a wireless
+  communication standard that is, among other things, used   for cordlesstelephones.
 - **SIP** is technically only a "signalling protocol" (it does say "Session
   Initiation" in the name), but is colloquially used to refer to network-based
   telephony ("Voice-over-IP") in general.
@@ -106,18 +106,17 @@ generally a bad thing.
 
 Let's look at an overview (as of the release of SIP-DECT v8.0):
 
-|                | indoor, 4 speech channels | indoor, 8 speech channels                  | outdoor, 8 speech channels        | identification characteristic      |
-| -------------- | ------------------------- | ------------------------------------------ | --------------------------------- | ---------------------------------- |
-| UpN (non-IP)   | -                         | 21, 22                                     | 23, 24                            | rectangular with protrusion, 1 LED |
-| 1st generation | -                         | 31 IP, 41 WLAN                             | 33 IP                             | smooth edges, no USB port, 1 LED   |
-| 2nd generation | -                         | 32 IP, 42 WLAN                             | 34 IP                             | smooth edges, no USB port, 4 LEDs  |
-| 3rd generation | -                         | [35 IP][rfp35ip], 43 WLAN                  | 36 IP (PoE-only), 37 IP (ext-ant) | smooth edges, USB port, 4 LEDs     |
-| 4th generation | 44 IP                     | [45 IP][rfp45ip], 47 IP (ext-ant), 48 WLAN | 47 IP DRC                         | "modern" angular look, no USB port |
+|                | indoor, 4 speech channels | indoor, 8 speech channels                  | outdoor, 8 speech channels                   | identification characteristic      |
+| -------------- | ------------------------- | ------------------------------------------ | -------------------------------------------- | ---------------------------------- |
+| 1st gen        | -                         | 31 IP, 41 WLAN                             | 33 IP                                        | smooth edges, no USB port, 1 LED   |
+| 2nd gen        | -                         | 32 IP, 42 WLAN                             | 34 IP                                        | smooth edges, no USB port, 4 LEDs  |
+| 3rd gen        | -                         | [35 IP][rfp35ip], 43 WLAN                  | 36 IP (PoE-only), 37 IP (PoE-only + ext-ant) | smooth edges, USB port, 4 LEDs     |
+| 4th gen        | 44 IP                     | [45 IP][rfp45ip], 47 IP (ext-ant), 48 WLAN | 47 IP DRC                                    | "modern" angular look, no USB port |
 
-(PoE-only): power only via PoE, no RJ11 power input  
-(ext-ant): external antenna connector, no internal DECT antenna  
-IP: only contains a DECT base station  
-WLAN: contains both a DECT base station and a WiFi AP  
+PoE-only: power only via PoE, no RJ11 power input  
+ext-ant: external antenna connector, no internal DECT antenna  
+IP: DECT base station without wifi  
+WLAN: DECT base station and with integrated WiFi AP  
 DRC: preinstalled with directional antennas in an outdoor enclosure
 
 You can see a 3rd gen (whose front looks almost identical to that of a 2nd gen, but has vents on the back) and
@@ -164,7 +163,7 @@ multiple RFPs and have become a rare exception now that documentation for
 SIP-DECT setups is becoming more accessible.)
 
 As long as the hardware is functional, you should have nothing to worry about:
-there are means to reset the configuration even if the seller has not provided
+there are means to [reset the configuration](#factory-reset), even if the seller has not provided
 the passwords.
 
 ## Plugging it in: Getting your RFP(s) up and running
@@ -205,7 +204,7 @@ Gen 2 and 3 indoor RFPs also support direct DC power via an RJ11 connector:
 
 ### Software update
 
-There are multiple ways to get the latest Firmware on your DECT RFP. (There are additional ways beside the ones described below.)
+There are multiple ways to get the latest Firmware on your DECT RFP
 
 #### Update via USB Flash drive
 
@@ -219,7 +218,7 @@ This is the easiest option.
 
 #### Update via HTTP
 
-This method requires access to an existing webserver.
+This method requires access to an existing webserver and a working OMM setup.
 
 1. Extract files iprfp3G.dnld (for Gen. 3 RFPs) and/or iprfp4G.dnld (for Gen. 4 RFPs) on your webserver
 2. Go to your OMM's web interface, log in and navigate to System/Provisioning & Software Update
@@ -236,7 +235,7 @@ Now the RFP should download its dnld file from the webserver you specified and r
 
 ### Recovering a RFP with corrupted Firmware.
 
-If the LED1 does not switch to orange after a reboot, chance is high the firmware might be corrupted. You can optionally verify this by get a serial dump of the u-boot bootloader. "UBI error" and "Error reading files" are the indicators you looking for.
+If the LED1 does not switch to orange after a reboot, chance is high the firmware might be corrupted. You can optionally verify this by get a (serial dump)[#serial-console] of the u-boot bootloader. "UBI error" and "Error reading files" are the indicators you looking for.
 
 To fix this, there is a function called uImageFailSafe that can be found on the internet, at least for SIP-DECT Version 4. 
 
