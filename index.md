@@ -202,19 +202,18 @@ Gen 2 and 3 indoor RFPs also support direct DC power via an RJ11 connector:
 
 [transformer-schematic]: https://www.digikey.com/en/datasheets/pulse-electronics-power/pulse-electronics-power-p675
 
-### Software update
+### Firmware update
 
-There are multiple ways to get the latest Firmware on your DECT RFP
+The legal way to obtain the firmware file is to purchase a software update subscription. The firmware files are included in the OMM software packages. All devices of a hardware generation use the same update file: 2G uses iprfp2G.tftp, 3G uses iprfp3G.dnld and 4G uses iprfp4G.dnld. MD5 checksums for the firmware files can be found in the release notes.
 
 #### Update via USB Flash drive
 
 This is the easiest option.
 
-1. Make sure the Flash Drive is formatted FAT32
-2. Copy the Firmware file onto the Drive
-3. Make sure it is named iprfp3G.dnld (for Gen. 3 RFPs) or iprfp4G.dnld (for Gen. 4 RFPs)
-4. Connect the Flash drive to the RFP and reboot the RFP by switching off and on the 48V
-5. Wait for about 2 minutes until the RFP signalizes successful flashing by flashing all LEDs in orange once
+1. Make sure the flash drive is FAT32 formatted
+2. Copy the firmware file to the drive, don't rename it
+3. Connect the flash drive to the RFP and power up the RFP
+4. Wait for about 2 minutes until the RFP signals successful flashing by flashing all LEDs in orange once
 
 #### Update via HTTP
 
@@ -235,13 +234,13 @@ Now the RFP should download its dnld file from the webserver you specified and r
 
 ### Recovering a RFP with corrupted Firmware.
 
-If the LED1 does not switch to orange after a reboot, chance is high the firmware might be corrupted. You can optionally verify this by get a (serial dump)[#serial-console] of the u-boot bootloader. "UBI error" and "Error reading files" are the indicators you looking for.
+If LED1 turns orange after powering up the RFP, there is a good chance that the firmware is corrupt. You can optionally check this by getting a (serial dump)[#serial-console] of the u-boot bootloader. "UBI error" and "Error reading files" are the indicators you are looking for.
 
-To fix this, there is a function called uImageFailSafe that can be found on the internet, at least for SIP-DECT Version 4. 
+To fix this, there is a file called uImageFailSafe that can be found on the internet, at least for SIP-DECT version 4.
 
-Take a FAT32 formatted USB Flash Drive, copy the "uImageFailSafe" and the corresponding SIP-DECT Vers. 4 "iprfp3G.dnld" onto the Drive and reboot the RFP. 
+Take a FAT32 formatted USB Flash Drive, copy the "uImageFailSafe" and the corresponding SIP-DECT Vers. 4 Firmware "iprfp3G.dnld" onto the Drive and power up the RFP
 
-The RFP will flash Version 4 from where it can be upgraded to the latest Version by the procedure shown above. 
+The RFP will flash to version 4 from where it can be upgraded to the latest version using the procedure shown above. 
 
 ### Factory reset
 
