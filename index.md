@@ -409,6 +409,15 @@ RFPs][example-license-offer]. Please note: the purchased licence will not be add
 
 [example-license-offer]: https://www.telefonanlage-shop.de/Aastra-DECT-Systeme-SIP-DECT-Lizenzen-System-91
 
+### Installing the OMM
+
+You can find the offical documentation with the Keyword "SIP-DECT LINUX Server Installation Administration Guide"
+
+#### via rpm paket
+
+Depending on how you received the software, you may have a file called "SIP-DECT.bin" or something like "SIP-DECT-OMM-9.0__HF02IK26-0.i686.rpm". If you execute the bin file, it will extract itself and install the rpms it contains (OMM, MOM and Handset). For a minimal running setup you only need the OMM. 
+If you want to set the listening network interface or the failover IPs, have a look at the /etc/sysconfig/SIP-DECT config file. Otherwise, you can simply enable / start the sip-dect-omm.service unit.
+
 ### Accessing the OMM
 
 You can access the OMM with your browser by going to the IP defined in your DHCP configuration.
