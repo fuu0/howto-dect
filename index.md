@@ -39,20 +39,10 @@ Just to recap:
   two: RFP devices act as DECT base stations and SIP clients, enabling
   DECT phones to make calls via a SIP server.
 - **Mitel**  bought Aastra in 2013, which in turn had bought DeTeWe in 2005. So you'll find all three company names mentioned somewhat interchangeably when it comes to SIP-DECT equipment.
-- **RFP** (Radio Fixed Part):  
-  Simply put, a DECT base station.  
-  *You can have one or more of these.*
-- **PP** (Portable Part):  
-  A DECT phone handset.  
-  *You can have one or more of these.*
-- **OMM** (Open Mobility Manager):  
-  A piece of software (running as a permanent service) that accepts your
-  configuration settings, coordinates communication between all *RFP*s, and acts
-  as the interface between SIP and DECT. The *OMM* has a web interface that
-  allows you to configure most (but not all) settings.  
-  *You will usually have one instance of this, possibly with a second instance
-  as a fallback. You might use the web interface for the initial installation, and
-  occasionally for administrative tasks afterwards.*
+- **RFP** (Radio Fixed Part) A DECT base station (You can have one or more of these)
+- **PP** (Portable Part) A DECT phone handset (You can have one or more of these)
+- **OMM** (Open Mobility Manager) A permanent running software for configuration, coordination the communication between all RFPs and as the interface between SIP and DECT.
+  The *OMM* has a web interface that allows you to configure most (but not all) settings. See the (OMM)[#the-omm] Section for more Information.
 - **OM Configurator**:  
   A piece of software (an administrative GUI) that allows you to configure
   Mitel *RFP*s' basic settings: IP address, network boot paths, *OMM* addresses
@@ -395,44 +385,44 @@ enable-tftp
 tftp-root=/srv/tftp
 ```
 
-
-### OMM on RFP vs stand-alone OMM
-
-*TODO*
-
-3rd- and 4th-generation RFPs can run in "OMM mode", i.e. they can run an OMM instance directly on the RFP hardware (in addition to providing DECT and/or WiFi service as usual).  
-2nd-generation RFPs cannot run an OMM on themselves; they require an external OMM (hosted on a server/VM or on a newer-generation RFP).
-
-### Accessing the OMM
-
-You can access the OMM with you browser for that go to the ip defined in your DHCP config.
-The default credentials are:
-```
-username: omm
-password: omm
-```
-
-A common problem you might experince is that the omm only supports tls version 1.1
-If you want to enable that in Firefox you can open a new tab with about:config and set security.tls.version.min to 1
-
 ## Software: Configuring the RFP
 
 *TODO*
 
 [sip-dect-manual]: https://www.mitel.com/de-de/document-center/devices-and-accessories/wireless-solutions-and-handsets/sip-dect-multi-cellular-solution/sip-dect
 
-## Manual OMM configuration and making a test call
+## The OMM
+The OMM is a permanent running software for
+- the configuration of all your RFPs
+- the coordination of the communication between all RFPs
+- the interface between DECT and SIP
+- managing all your PP
 
-### OMM Setup
-First, log in to the OMM by browsing the web interface, you might have to accept the self-signed certificate. After accepting the EULA, you will be asked to set passwords.
+You will normally have one instance of this, possibly with a second instance as a fallback. You can use the web interface for the initial installation and later for administrative tasks afterwards. A Gen 3 or higher RFP can act as the OMM for up to 5 RFPs (in addition to providing DECT and/or WiFi service as usual). Gen 2 RFPs cannot run an OMM on themselves, they require an external OMM (hosted on a server/VM or on a newer-generation RFP). Mitel also provides the OMM also as an rpm (linux package) or ova (virtual machine image), especially for larger or ha setups.
 
+### Licensing
+
+With the current licensing model, you can use up to 5 RFPs without adding an explicit licence. All RFPs connected to the same OMM are counted, regardless of how they are divided into DECT synchronisation clusters.
+A licence must be purchased for larger deployments. The licence is tied to the MAC addresses of three RFPs in the deployment (for redundancy - one of the licensed RFPs can become faulty/unavailable).
+As a ballpark figure, these licences start at [approx. 530€ for up to 10
+RFPs][example-license-offer]. Please note: the purchased licence will not be added to the 5 included RFPs
+
+[example-license-offer]: https://www.telefonanlage-shop.de/Aastra-DECT-Systeme-SIP-DECT-Lizenzen-System-91
+
+### Accessing the OMM
+
+You can access the OMM with your browser by going to the IP defined in your DHCP configuration.
+The default credentials are:
 | User | Default Password | Description                                           |
 | ---- | ---------------- | ----------------------------------------------------- |
 | omm  | omm              | Web Interface, OMM Configrator, OMM Management Portal |
 | root | -                | SSH access                                            |
 
-### System Settings
+A common problem with older versions of OMM is that it only supports TLS version 1.1.
+If you want to enable this in Firefox, you can open a new tab with about:config and set security.tls.version.min to 1.
 
+### Initial Setup
+After log in to the OMM by browsing the web interface, you might have to accept the EULA and will be asked to set passwords.  
 Now we have to do some basic setup. Make sure to set the `Advanced`-Checkbox at the top to access all settings.
 
 First go to the `System / System Settings` tab to set the PARK.
@@ -497,20 +487,6 @@ If it is not needed, you can choose "fixed" instead.
 If a user-device combination is "dynamic" the user can call a feature-code number from their device to detach and re-attach their *User* from the *Device* they're making the call from.
 
 ## More: Larger deployments, SIP servers, and other shenanigans
-
-### Licensing
-
-There used to be "<number>L" models which included a licence for multiple RFPs.
-From SIP-DECT 6.0 onwards, licences are independent of RFP models; there is no
-distinction between L and non-L RFPs anymore.
-
-With the new licensing model, up to 5 RFPs can be used together "out of the box" without adding an explicit licence. This presumably applies to the number of RFPs connected to the same OMM, regardless of how they are divided into DECT synchronisation clusters.
-For larger deployments, a licence file must be purchased. The licence is
-bound to the MAC addresses of three RFPs in the deployment (for redundancy - one of the licensed RFPs can become faulty/unavailable).
-As a ballpark figure, these licences start at [approx. 530€ for up to 10
-RFPs][example-license-offer]. Please note: the purchased licence will not be added to the 5 included RFPs
-
-[example-license-offer]: https://www.telefonanlage-shop.de/Aastra-DECT-Systeme-SIP-DECT-Lizenzen-System-91
 
 ### Mounting
 
