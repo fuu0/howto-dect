@@ -411,7 +411,7 @@ RFPs][example-license-offer]. Please note: the purchased licence will not be add
 
 ### Installing the OMM
 
-You can find the offical documentation with the Keyword "SIP-DECT LINUX Server Installation Administration Guide"
+Independently of this page, you can find the official documentation with the keyword ‘SIP-DECT LINUX Server Installation Administration Guide’.
 
 #### via rpm paket
 
