@@ -421,12 +421,7 @@ If you want to set the listening network interface or the failover IPs, have a l
 ### Accessing the OMM
 
 You can access the OMM with your browser by going to the IP defined in your DHCP configuration.
-The default credentials are:
-| User | Default Password | Description                                           |
-| ---- | ---------------- | ----------------------------------------------------- |
-| omm  | omm              | Web Interface, OMM Configrator, OMM Management Portal |
-| root | -                | SSH access                                            |
-
+The default user / password is omm  
 A common problem with older versions of OMM is that it only supports TLS version 1.1.
 If you want to enable this in Firefox, you can open a new tab with about:config and set security.tls.version.min to 1.
 
