@@ -507,32 +507,25 @@ If a user-device combination is "dynamic" the user can call a feature-code numbe
 
 ### Licensing
 
-There used to be "<number>L" models that included a license for multiple RFPs.
-As of SIP-DECT 6.0, licenses are independent from RFP models; there is no
-distinction between L- and non-L-RFPs anymore.
+There used to be "<number>L" models which included a licence for multiple RFPs.
+From SIP-DECT 6.0 onwards, licences are independent of RFP models; there is no
+distinction between L and non-L RFPs anymore.
 
-With the new licensing model, up to 5 RFPs can be used together "out of the
-box" without adding an explicit license. (Presumably, this applies to the
-number of RFPs connected to the same OMM, regardless of how they are split into
-DECT synchronisation clusters.)
-For larger deployments, a license file needs to be purchased. The license is
-usually tied to the MAC addresses of three RFPs in the deployment (for
-redundancy in case one of the licensed RFPs becomes defective/unreachable).
-As a ballpark figure, these licenses start at [approx. 530€ for up to 10
-RFPs][example-license-offer].
+With the new licensing model, up to 5 RFPs can be used together "out of the box" without adding an explicit licence. This presumably applies to the number of RFPs connected to the same OMM, regardless of how they are divided into DECT synchronisation clusters.
+For larger deployments, a licence file must be purchased. The licence is
+bound to the MAC addresses of three RFPs in the deployment (for redundancy - one of the licensed RFPs can become faulty/unavailable).
+As a ballpark figure, these licences start at [approx. 530€ for up to 10
+RFPs][example-license-offer]. Please note: the purchased licence will not be added to the 5 included RFPs
 
 [example-license-offer]: https://www.telefonanlage-shop.de/Aastra-DECT-Systeme-SIP-DECT-Lizenzen-System-91
 
 ### Mounting
 
-The RFPs feature different methods of (usually wall-) mounting them: The indoor
-models can generally be hooked onto a screw that was previously screwed into
-the wall, while the outdoor models feature both a hook and a number of nuts
-embedded into the plastic case.
+The RFPs have different methods of (usually wall-) mounting them: The indoor
+models can generally be hooked onto a screw in a wall, while the outdoor models have both a hook and a number of nuts
+embedded in the case.
 
-Since the need for fast and frequent mounting and unmounting during events
-arose, there is now a repository with measured dimensions and mounting plate
-designs: [dect-e/rfp-mounting](https://github.com/dect-e/rfp-mounting)
+Due to the need for quick and frequent assembly and disassembly during events, a repository with measured dimensions and mounting plate designs is available: [dect-e/rfp-mounting](https://github.com/dect-e/rfp-mounting)
 
 ### Disassembly
 
