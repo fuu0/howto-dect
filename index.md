@@ -31,34 +31,27 @@ probably, read on. ;)
 
 Just to recap:
 
-- **DECT** (Digital Enhanced Cordless Telecommunication) is a wireless
-  communication standard that is, among other things, used   for cordlesstelephones.
-- **SIP** is technically only a "signalling protocol" (it does say "Session
+- **DECT** (Digital Enhanced Cordless Telecommunication) is a wireless communications standard, used for cordless phones among other things.
+- **SIP** is technically just "signalling protocol" (it does say "Session
   Initiation" in the name), but is colloquially used to refer to network-based
   telephony ("Voice-over-IP") in general.
-- **SIP-DECT** is a line of products by *Mitel* (see below) that combines the
-  two: SIP-DECT devices act as DECT base stations and SIP clients, allowing
+- **SIP-DECT** is a product line from *Mitel* (see below) that combines the
+  two: RFP devices act as DECT base stations and SIP clients, enabling
   DECT phones to make calls via a SIP server.
-- **Mitel** purchased Aastra in 2013, who had in turn purchased DeTeWe in 2005, so
-  you'll find all three company names mentioned somewhat interchangeably when
-  it comes to SIP-DECT equipment.
-
-The SIP-DECT setup uses several more terms and abbreviations. You'll primarily
-come across:
-
+- **Mitel**  bought Aastra in 2013, which in turn had bought DeTeWe in 2005. So you'll find all three company names mentioned somewhat interchangeably when it comes to SIP-DECT equipment.
 - **RFP** (Radio Fixed Part):  
   Simply put, a DECT base station.  
-  *You can have one or multiple of these.*
+  *You can have one or more of these.*
 - **PP** (Portable Part):  
   A DECT phone handset.  
-  *You can have one or multiple of these.*
+  *You can have one or more of these.*
 - **OMM** (Open Mobility Manager):  
   A piece of software (running as a permanent service) that accepts your
-  configuration settings, coordinates communication across all *RFP*s, and acts
+  configuration settings, coordinates communication between all *RFP*s, and acts
   as the interface between SIP and DECT. The *OMM* has a web interface that
   allows you to configure most (but not all) settings.  
   *You will usually have one instance of this, possibly with a second instance
-  as fallback. You might use the web interface for the inital installation, and
+  as a fallback. You might use the web interface for the initial installation, and
   occasionally for administrative tasks afterwards.*
 - **OM Configurator**:  
   A piece of software (an administrative GUI) that allows you to configure
